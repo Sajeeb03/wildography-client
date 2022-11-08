@@ -5,21 +5,14 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    // apiKey: process.env.REACT_APP_apiKey,
-    // authDomain: process.env.REACT_APP_authDomain,
-    // projectId: process.env.REACT_APP_projectId,
-    // storageBucket: process.env.REACT_APP_storageBucket,
-    // messagingSenderId: process.env.REACT_APP_messagingSenderId,
-    // appId: process.env.REACT_APP_appId,
-    apiKey: "AIzaSyCMOb6C2CySvQqi0yftQ7QMuwbf_K7CR0U",
-    authDomain: "wildography-b0b36.firebaseapp.com",
-    projectId: "wildography-b0b36",
-    storageBucket: "wildography-b0b36.appspot.com",
-    messagingSenderId: "576272614430",
-    appId: "1:576272614430:web:754db722630e5d5f841a0f"
+    apiKey: import.meta.env.VITE_REACT_apiKey,
+    authDomain: import.meta.env.VITE_REACT_authDomain,
+    projectId: import.meta.env.VITE_REACT_projectId,
+    storageBucket: import.meta.env.VITE_REACT_storageBucket,
+    messagingSenderId: import.meta.env.VITE_REACT_messagingSenderId,
+    appId: import.meta.env.VITE_REACT_appId,
 };
-// console.log(firebaseConfig)
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 export default app;

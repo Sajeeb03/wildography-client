@@ -67,14 +67,16 @@ const Login = () => {
                     error.password && <small className='text-orange-300'>{error.password}</small>
                 }
 
-                <Button type="submit" className='w-full mt-5 bg-orange-500 hover:bg-orange-300'>
-                    Login
-                </Button>
+                <button type="submit" className='w-full py-2 rounded-lg mt-5 bg-orange-500 hover:bg-orange-300'>Login</button>
                 {
                     error.general && <small className='text-orange-300'>{error.general}</small>
                 }
             </form>
-            <GoogleSignIn></GoogleSignIn>
+            <div className='mt-3'>
+                <h2 className="text-2xl font-semibold text-center">Or</h2>
+                <GoogleSignIn></GoogleSignIn>
+            </div>
+
             <p className='mt-2 text-center'>New Here? <Link to="/register" className='text-orange-500'>Register now!</Link></p>
         </div>
     );

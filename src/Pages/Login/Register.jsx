@@ -2,6 +2,7 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import GoogleSignIn from './GoogleSignIn';
 
 const Register = () => {
     const [userInfo, setUserInfo] = useState({ email: "", password: "" });
@@ -90,13 +91,15 @@ const Register = () => {
                     error.password && <small className='text-orange-300'>{error.password}</small>
                 }
 
-                <Button type="submit" className='w-full mt-5 bg-orange-500 hover:bg-orange-300'>
-                    Register
-                </Button>
+                <button type="submit" className='w-full py-2 rounded-lg mt-5 bg-orange-500 hover:bg-orange-300'>Register</button>
                 {
                     error.general && <small className='text-orange-300'>{error.general}</small>
                 }
             </form>
+            <div className='mt-3'>
+                <h2 className="text-2xl font-semibold text-center">Or</h2>
+                <GoogleSignIn></GoogleSignIn>
+            </div>
             <p className='mt-2 text-center'>Already have an account? <Link to="/login" className='text-orange-500'>Login now!</Link></p>
         </div>
     );
