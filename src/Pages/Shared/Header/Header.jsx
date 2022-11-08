@@ -8,13 +8,15 @@ const Header = () => {
     return (
         <div className='flex justify-between items-center my-4'>
             <div>
-                <img src={img} alt="" className='h-14' />
+                <Link to="/">
+                    <img src={img} alt="" className='h-14' />
+                </Link>
             </div>
             <div>
                 <Link to="/">Home</Link>
-                <Link className='ml-3' to="/">Home</Link>
-                <Link className='ml-3' to="/">Home</Link>
-                <Link className='ml-3' to="/">Home</Link>
+                <Link className='ml-3' to="/services">Services</Link>
+                <Link className='ml-3' to="/blogs">Blogs</Link>
+                <Link className='ml-3' to="/login">Log In</Link>
             </div>
 
         </div>
