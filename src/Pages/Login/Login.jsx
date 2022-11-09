@@ -1,15 +1,23 @@
 import { Button, Label, TextInput } from 'flowbite-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import GoogleSignIn from './GoogleSignIn';
 
 const Login = () => {
     const [userInfo, setUserInfo] = useState({ email: "", password: "" });
     const [error, setError] = useState({ email: "", password: "", general: "" })
-    const handleLogin = e => {
+    const { logIn } = useContext(AuthContext);
+    const handleLogin = async e => {
         e.preventDefault();
-        console.log(userInfo)
+        try {
+            const res = await logIn(userInfo.email, userInfo.password);
+            console.log(res.user)
+            setError({ ...error, general: "" })
+        } catch (err) {
+            setError({ ...error, general: err.message })
+        }
     }
     const handleEmail = (e) => {
         console.log(e.target.value)

@@ -17,8 +17,9 @@ const Register = () => {
             const res = await registration(userInfo.email, userInfo.password);
             const update = await updateUser(name, url);
             console.log(res.user)
-        } catch (error) {
-            console.error(error)
+            setError({ ...error, general: "" })
+        } catch (err) {
+            setError({ ...error, general: err.message })
         }
 
     }
@@ -57,7 +58,6 @@ const Register = () => {
                         name='name'
                         placeholder="e.g.John Doe"
                         required={true}
-                        onChange={handleEmail}
                     />
                 </div>
                 <div>
@@ -70,7 +70,6 @@ const Register = () => {
                         type="text"
                         placeholder="insert an url"
                         required={true}
-                        onChange={handleEmail}
                     />
                 </div>
                 <div>
