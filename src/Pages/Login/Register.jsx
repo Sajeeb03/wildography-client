@@ -1,15 +1,26 @@
 import { Button, Label, TextInput } from 'flowbite-react';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import GoogleSignIn from './GoogleSignIn';
 
 const Register = () => {
     const [userInfo, setUserInfo] = useState({ email: "", password: "" });
-    const [error, setError] = useState({ email: "", password: "", general: "" })
-    const handleRegister = e => {
+    const [error, setError] = useState({ email: "", password: "", general: "" });
+    const { updateUser, registration } = useContext(AuthContext);
+    const handleRegister = async (e) => {
         e.preventDefault();
-        console.log(userInfo)
+        const name = e.target.name.value;
+        const url = e.target.url.value;
+        try {
+            const res = await registration(userInfo.email, userInfo.password);
+            const update = await updateUser(name, url);
+            console.log(res.user)
+        } catch (error) {
+            console.error(error)
+        }
+
     }
     const handleEmail = (e) => {
         console.log(e.target.value)
@@ -43,6 +54,7 @@ const Register = () => {
                     <TextInput
                         id="name1"
                         type="text"
+                        name='name'
                         placeholder="e.g.John Doe"
                         required={true}
                         onChange={handleEmail}
@@ -54,6 +66,7 @@ const Register = () => {
                     </div>
                     <TextInput
                         id="photo1"
+                        name='url'
                         type="text"
                         placeholder="insert an url"
                         required={true}
