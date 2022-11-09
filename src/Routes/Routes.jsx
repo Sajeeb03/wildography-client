@@ -29,7 +29,10 @@ const router = createBrowserRouter([
             },
             {
                 path: "/services/:id",
-                element: <ServiceDetails />
+                element: <ServiceDetails />,
+                loader: ({ params }) => {
+                    return fetch(`https://wildography-server.vercel.app/services/${params.id}`)
+                }
             }
         ]
     }
