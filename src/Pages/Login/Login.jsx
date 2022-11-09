@@ -15,6 +15,7 @@ const Login = () => {
             const res = await logIn(userInfo.email, userInfo.password);
             console.log(res.user)
             setError({ ...error, general: "" })
+            e.target.reset();
         } catch (err) {
             setError({ ...error, general: err.message })
         }

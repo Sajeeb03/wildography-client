@@ -18,6 +18,7 @@ const Register = () => {
             const update = await updateUser(name, url);
             console.log(res.user)
             setError({ ...error, general: "" })
+            e.target.reset()
         } catch (err) {
             setError({ ...error, general: err.message })
         }
