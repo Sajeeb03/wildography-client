@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import img from '../../assets/home.jpg'
+import img from '../../../assets/home.jpg'
 const Main = () => {
     return (
         <div className='relative'>

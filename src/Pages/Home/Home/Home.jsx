@@ -1,5 +1,6 @@
 import React from 'react';
-import First from '../First';
+import About from '../About/About';
+import First from '../FirstSection/First';
 import ServicesHome from '../SevicesHome/ServicesHome';
 import Showcase from '../Showcase/Showcase';
 import './Home.css'
@@ -9,6 +10,7 @@ const Home = () => {
             <First />
             <ServicesHome />
             <Showcase />
+            <About />
         </div>
     );
 };

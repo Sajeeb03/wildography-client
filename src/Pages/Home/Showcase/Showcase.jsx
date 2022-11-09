@@ -12,7 +12,7 @@ const Showcase = () => {
         <div className='mb-5'>
             <div className='text-center my-5'>
                 <h1 className="text-4xl font-bold">Recent Clicks</h1>
-                <p>My Recent click are in a showcase here!</p>
+                <p>My Recent clicks are in a showcase here!</p>
             </div>
             <div className="grid grid-cols-4 h-[600px]">
                 <div className='h-full'>
