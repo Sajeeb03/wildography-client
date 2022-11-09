@@ -6,7 +6,7 @@ const Service = ({ service }) => {
     const { _id, title, details, img, price, rating } = service;
     return (
         <div className='my-4'>
-            <Card imgSrc={img} className="bg-[#242424] text-white">
+            <Card imgSrc={img} style={{ backgroundColor: "#242424" }} className="text-white">
                 <h5 className="text-2xl font-bold tracking-tight">
                     {title}
                 </h5>
