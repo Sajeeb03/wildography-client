@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 import Service from '../Home/SevicesHome/Service'
 const Services = () => {
     const [services, setServices] = useState([]);
@@ -10,6 +11,8 @@ const Services = () => {
                 setServices(data.data)
             })
     }, [])
+
+    useTitle("Services")
     return (
         <div className='my-12'>
             <h1 className="text-4xl font-bold text-center">Services</h1>
