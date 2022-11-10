@@ -55,14 +55,6 @@ const ServiceDetails = () => {
             .catch(err => console.error(err))
     }, [refresh])
 
-    //     const handleReview = async () => {
-    //         const res = await fetch(`https://wildography-server.vercel.app/reviews`, {
-    //             method: "POST",
-    //             headers: {
-    //                 'content-type': 'application/json'
-    //             },
-    //             body:
-    // })
 
     return (
         <div>
