@@ -8,7 +8,7 @@ import useTitle from '../../Hooks/useTitle';
 
 const MyReview = () => {
     const { user, logOut } = useContext(AuthContext);
-    const [myReviews, setMyReviews] = useState(null);
+    const [myReviews, setMyReviews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [refresh, setRefresh] = useState(true)
     useTitle("my-reviews")
@@ -60,7 +60,10 @@ const MyReview = () => {
     return (
         <div>
 
-            {
+            {   
+                myReviews?.length === 0 ? <div className='h-screen flex justify-center items-center'>
+                    <h1 className='text-4xl font-bold'>No Review Added</h1>
+                </div> :
                 myReviews.map(review => <div className='border-2 border-white rounded-lg p-12 my-5' key={review._id}>
                     <div className='flex items-center gap-3'>
                         {review.img ? <img src={review?.img} className="w-12 rounded-full" alt="" /> : <FaUser className='h-6 w-6 text-white' />}

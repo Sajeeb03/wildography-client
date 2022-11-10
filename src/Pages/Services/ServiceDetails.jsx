@@ -5,16 +5,17 @@ import { FaStar, FaUser } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
-
+import DateObject from "react-date-object";
 const ServiceDetails = () => {
     const service = useLoaderData();
     // console.log(service.data)
     const { user, logOut } = useContext(AuthContext);
-    const { _id, title, price, rating, details, img } = service.data;
+    const { title, price, rating, details, img } = service.data;
     const [reviews, setReviews] = useState([]);
     const [refresh, setRefresh] = useState(true);
-
-
+    const showDate = new Date();
+    const time = showDate.getDate() + showDate.getTime();
+    console.log(time)
 
     const handleReview = async e => {
         e.preventDefault();
@@ -23,7 +24,8 @@ const ServiceDetails = () => {
             email: user.email,
             img: user.photoURL,
             review: e.target.review.value,
-            service: title
+            service: title,
+            time: time
         }
 
         console.log(reviewDetails);

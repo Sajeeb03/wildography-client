@@ -28,6 +28,7 @@ const AddService = () => {
             const data = await res.json();
             if (data.success) {
                 toast.success("Service Added", { autoClose: 500 })
+                e.target.reset()
             }
         } catch (error) {
             console.error(error)
