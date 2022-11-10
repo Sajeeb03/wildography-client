@@ -9,12 +9,12 @@ import img7 from "../../../assets/New folder/pexels-photo-3608263.jpeg"
 import img8 from "../../../assets/New folder/cheetahs-cubs-two-together-1623182.jpeg"
 const Showcase = () => {
     return (
-        <div className='mb-5'>
+        <div className='md:mb-5'>
             <div className='text-center my-5'>
                 <h1 className="text-4xl font-bold">Recent Clicks</h1>
                 <p>My Recent clicks are in a showcase here!</p>
             </div>
-            <div className="grid grid-cols-4 h-[600px]">
+            <div className="grid grid-cols-1 md:grid-cols-4 md:h-[600px] gap-2 md:gap-0">
                 <div className='h-full'>
                     <img src={img1} className="h-[300px] w-full border-2 border-white" alt="" />
                     <img src={img4} className="h-[300px] w-full border-2 border-white" alt="" />

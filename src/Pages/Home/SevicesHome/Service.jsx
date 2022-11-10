@@ -7,11 +7,11 @@ import 'react-photo-view/dist/react-photo-view.css';
 const Service = ({ service }) => {
     const { _id, title, details, img, price, rating } = service;
     return (
-        <div className='my-4'>
+        <div className=''>
             <Card style={{ backgroundColor: "#242424" }} className="text-white">
                 <PhotoProvider>
                     <PhotoView src={img}>
-                        <img src={img} alt="" />
+                        <img src={img} className="h-[210px] rounded-t-lg" alt="" />
                     </PhotoView>
                 </PhotoProvider>
                 <h5 className="text-2xl font-bold tracking-tight">

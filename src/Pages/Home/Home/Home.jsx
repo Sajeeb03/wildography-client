@@ -13,8 +13,9 @@ const Home = () => {
         <div>
             <First />
             <ServicesHome />
-            <Showcase />
+            <Showcase />   
             <About />
+
         </div>
     );
 };

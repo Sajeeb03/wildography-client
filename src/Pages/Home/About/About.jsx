@@ -4,9 +4,9 @@ import { FaFacebook, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa';
 import profile from '../../../assets/profile.jpeg'
 const About = () => {
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 items-center my-24'>
+        <div className='grid grid-cols-1 md:grid-cols-2 items-center my-6 md:my-24 z-10'>
             <img src={profile} className="h-[556px] w-full" alt="" />
-            <div className='w-2/3 m-auto'>
+            <div className='w-2/3 m-auto mt-14 md:mt-16'>
                 <h1 className="text-4xl font-bold">About Me</h1>
                 <p>Hello Myself Abdullah, A passionate wildlife photographer. I have done my phd in wildlife photography from Oxford university. And I have two years of experience as a professional wildlife photographer. </p>
                 <div className='mt-3'>

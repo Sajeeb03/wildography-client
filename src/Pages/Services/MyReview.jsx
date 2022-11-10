@@ -71,7 +71,7 @@ const MyReview = () => {
                     </div>
                     <div className='ml-15 mt-2'>
                         <p className='text-lg font-semibold'>Service Name: {review.service}</p>
-                        <p className=''>Review: {review.review}</p>
+                        <p className='mb-2'>Review: {review.review}</p>
                     </div>
                     <div className='flex justify-end gap-3 items-end'>
                         <button onClick={() => handleDelete(review._id)} className='flex gap-2 bg-[#242424] border-2 border-white rounded-lg px-4 py-2'>Delete <FaTrash className='h-6 w-6'></FaTrash></button>
