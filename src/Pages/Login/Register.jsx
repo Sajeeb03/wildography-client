@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 import GoogleSignIn from './GoogleSignIn';
 
 const Register = () => {
@@ -10,6 +11,8 @@ const Register = () => {
     const [error, setError] = useState({ email: "", password: "", general: "" });
     const { updateUser, registration } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    useTitle("Register")
     const handleRegister = async (e) => {
         e.preventDefault();
         const name = e.target.name.value;

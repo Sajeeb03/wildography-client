@@ -29,7 +29,7 @@ const Header = () => {
                 {
                     user?.uid ? <>
                         <Link className='ml-3' to="/myreviews">My Reviews</Link>
-                        <Link className='ml-3' to="/service">Add Service</Link>
+                        <Link className='ml-3' to="/addservice">Add Service</Link>
                         <Link onClick={handleSignOut} className='ml-3' to="/login">LogOut</Link>
                     </> : <Link className='ml-3' to="/login">Log In</Link>
                 }

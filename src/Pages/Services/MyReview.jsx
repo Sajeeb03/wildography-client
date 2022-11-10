@@ -1,15 +1,17 @@
 import { Spinner, TextInput, Toast } from 'flowbite-react';
 import React, { useContext, useEffect, useState } from 'react';
 import { FaEdit, FaTrash } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 
 const MyReview = () => {
     const { user } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState(null);
     const [loading, setLoading] = useState(true);
     const [refresh, setRefresh] = useState(true)
-
+    useTitle("my-reviews")
     const handleDelete = async (id) => {
         try {
             const res = await fetch(`https://wildography-server.vercel.app/reviews/${id}`, {
@@ -61,9 +63,10 @@ const MyReview = () => {
                     </div>
                     <div className='flex justify-end gap-3 items-end'>
                         <button onClick={() => handleDelete(review._id)} className='flex gap-2 bg-[#242424] border-2 border-white rounded-lg px-4 py-2'>Delete <FaTrash className='h-6 w-6'></FaTrash></button>
-                        <button onClick={() => handleUpdate(review._id)} className='flex gap-2 bg-[#242424] border-2 border-white rounded-lg px-4 py-2'>Edit/Update <FaEdit className='h-6 w-6'></FaEdit></button>
+                        <Link to={`/reviews/${review._id}`}>
+                            <button className='flex gap-2 bg-[#242424] border-2 border-white rounded-lg px-4 py-2'>Edit/Update <FaEdit className='h-6 w-6'></FaEdit></button>
+                        </Link>
                     </div>
-
                 </div>)
             }
 

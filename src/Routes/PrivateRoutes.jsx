@@ -7,7 +7,7 @@ const PrivateRoutes = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
     if (loading) {
-        return <div>
+        return <div className='flex justify-center my-64'>
             <Spinner
                 color="failure"
                 aria-label="Failure spinner example"

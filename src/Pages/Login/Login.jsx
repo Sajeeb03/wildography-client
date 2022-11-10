@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import useTitle from '../../Hooks/useTitle';
 import GoogleSignIn from './GoogleSignIn';
 
 const Login = () => {
@@ -11,6 +12,8 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { logIn } = useContext(AuthContext);
+
+    useTitle('Login')
     const handleLogin = async e => {
         e.preventDefault();
         try {

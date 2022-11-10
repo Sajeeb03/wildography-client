@@ -1,5 +1,6 @@
 import { Spinner } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
+import ScrollToTop from '../../Hooks/useScrollToTop';
 import useTitle from '../../Hooks/useTitle';
 import Service from '../Home/SevicesHome/Service'
 const Services = () => {
@@ -15,6 +16,7 @@ const Services = () => {
     }, [])
 
     useTitle("Services")
+    ScrollToTop();
 
     if (loading) {
         return <div className="text-center my-64">
