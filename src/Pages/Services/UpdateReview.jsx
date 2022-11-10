@@ -3,12 +3,14 @@ import { TextInput } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import ScrollToTop from '../../Hooks/useScrollToTop';
 
 const UpdateReview = () => {
     const [update, setUpdate] = useState([]);
     const route = useParams();
     const id = route.id;
     const navigate = useNavigate();
+    ScrollToTop();
     const handleUpdate = async e => {
         e.preventDefault();
         const updated = {
@@ -36,7 +38,7 @@ const UpdateReview = () => {
             .catch(err => console.error(err))
     }, [id])
     return (
-        <div className='w-1/2 m-auto border-2 border-white p-6 my-12'>
+        <div className='md:w-1/2 m-auto border-2 border-white p-6 my-12 rounded-lg'>
             <form onSubmit={handleUpdate}>
                 <TextInput
                     id="large"

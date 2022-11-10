@@ -20,7 +20,7 @@ const Footer = () => {
                         <li>Flowbite React</li>
                     </ul>
                 </div>
-                <div className='m-auto mt-0'>
+                <div className='md:m-auto mt-3 ml-14 md:mt-0'>
                     <h1 className="text-2xl font-semibold">Explore</h1>
                     <ul>
                         <li><Link to="/">Home</Link></li>
@@ -29,12 +29,12 @@ const Footer = () => {
                         <li><Link to="/contact">Contact</Link></li>
                     </ul>
                 </div>
-                <div className='m-auto mt-0'>
+                <div className='md:m-auto mt-3 ml-14 md:ml-0 md:mt-0'>
                     <h1 className="text-2xl font-semibold">Hire Me</h1>
                     <div className='flex justify-start gap-4 text-4xl'>
                         <FaFacebook /><FaTwitter /><FaGithub /><FaInstagram />
                     </div>
-                    <div className='my-2'>
+                    <div className='my-2 w-5/6 md:w-full'>
                         <TextInput
                             id="small"
                             type="text"
