@@ -1,18 +1,26 @@
+import { Spinner } from 'flowbite-react';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import useTitle from '../../Hooks/useTitle';
 import Service from '../Home/SevicesHome/Service'
 const Services = () => {
     const [services, setServices] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         fetch(`https://wildography-server.vercel.app/services`)
             .then(res => res.json())
             .then(data => {
-                setServices(data.data)
+                setServices(data.data);
+                setLoading(false)
             })
     }, [])
 
     useTitle("Services")
+
+    if (loading) {
+        return <div className="text-center my-64">
+            <Spinner aria-label="Center-aligned spinner example" />
+        </div>
+    }
     return (
         <div className='my-12'>
             <h1 className="text-4xl font-bold text-center">Services</h1>

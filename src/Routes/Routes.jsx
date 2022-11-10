@@ -6,6 +6,7 @@ import Login from "../Pages/Login/Login";
 import Register from "../Pages/Login/Register";
 import ServiceDetails from "../Pages/Services/ServiceDetails";
 import Services from "../Pages/Services/Services";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
@@ -30,7 +31,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/services/:id",
-                element: <ServiceDetails />,
+                element: <PrivateRoutes><ServiceDetails /></PrivateRoutes>,
                 loader: ({ params }) => {
                     return fetch(`https://wildography-server.vercel.app/services/${params.id}`)
                 }

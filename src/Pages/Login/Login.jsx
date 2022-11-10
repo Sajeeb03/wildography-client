@@ -1,13 +1,15 @@
 import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import GoogleSignIn from './GoogleSignIn';
 
 const Login = () => {
     const [userInfo, setUserInfo] = useState({ email: "", password: "" });
     const [error, setError] = useState({ email: "", password: "", general: "" })
+    const location = useLocation();
+    const navigate = useNavigate();
     const { logIn } = useContext(AuthContext);
     const handleLogin = async e => {
         e.preventDefault();
@@ -16,6 +18,7 @@ const Login = () => {
             console.log(res.user)
             setError({ ...error, general: "" })
             e.target.reset();
+            navigate(location?.state?.from?.pathname || '/')
         } catch (err) {
             setError({ ...error, general: err.message })
         }
