@@ -13,10 +13,11 @@ const Services = () => {
                 setServices(data.data);
                 setLoading(false)
             })
+        window.scrollTo(0, 0)
     }, [])
 
     useTitle("Services")
-    ScrollToTop();
+
 
     if (loading) {
         return <div className="text-center my-64">

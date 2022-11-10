@@ -6,6 +6,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 import DateObject from "react-date-object";
+import ScrollToTop from '../../Hooks/useScrollToTop';
 const ServiceDetails = () => {
     const service = useLoaderData();
     // console.log(service.data)
@@ -42,6 +43,7 @@ const ServiceDetails = () => {
             console.log(data)
             e.target.reset();
             setRefresh(!refresh)
+
         } catch (error) {
             console.error(error)
         }
@@ -65,14 +67,15 @@ const ServiceDetails = () => {
             })
             .then(data => setReviews(data.data))
             .catch(err => console.error(err))
+        window.scrollTo(0, 0)
     }, [refresh])
 
 
     return (
         <div>
-            <div className='w-1/2 m-auto border-2 border-white p-4 rounded-lg my-12'>
+            <div className='md:w-1/2 m-auto border-2 border-white p-4 rounded-lg my-12'>
                 <h1 className="text-4xl font-bold text-center mb-3">{title}</h1>
-                <img src={img} alt="" className='' />
+                <img src={img} alt="" className='h-[500px] w-full' />
                 <h2 className="text-2xl font-semibold my-2">Description:</h2>
                 <p className='mb-3'>{details}</p>
                 <h2 className="text-2xl font-semibold my-2">Price: ${price}</h2>

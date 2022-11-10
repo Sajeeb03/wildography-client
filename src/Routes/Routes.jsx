@@ -9,12 +9,14 @@ import MyReview from "../Pages/Services/MyReview";
 import ServiceDetails from "../Pages/Services/ServiceDetails";
 import Services from "../Pages/Services/Services";
 import UpdateReview from "../Pages/Services/UpdateReview";
+import Error from "../Pages/Shared/Error/Error";
 import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Main />,
+        errorElement: <Error />,
         children: [
             {
                 path: '/',
