@@ -1,5 +1,6 @@
 import { TextInput } from 'flowbite-react';
 import React from 'react';
+import { toast } from 'react-toastify';
 import useTitle from '../../Hooks/useTitle';
 
 const AddService = () => {
@@ -25,7 +26,9 @@ const AddService = () => {
             })
 
             const data = await res.json();
-            console.log(data)
+            if (data.success) {
+                toast.success("Service Added", { autoClose: 500 })
+            }
         } catch (error) {
             console.error(error)
         }

@@ -2,6 +2,7 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { verifyToken } from '../../api/verifyjwt';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 import GoogleSignIn from './GoogleSignIn';
@@ -12,16 +13,21 @@ const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
     const { logIn } = useContext(AuthContext);
-
     useTitle('Login')
+
     const handleLogin = async e => {
         e.preventDefault();
         try {
             const res = await logIn(userInfo.email, userInfo.password);
-            console.log(res.user)
+            const user = res.user;
+            // console.log(res.user)
             setError({ ...error, general: "" })
-            e.target.reset();
-            navigate(location?.state?.from?.pathname || '/')
+            const data = await verifyToken(user);
+            if (data.success) {
+                e.target.reset();
+                navigate(location?.state?.from?.pathname || '/')  
+            }
+
         } catch (err) {
             setError({ ...error, general: err.message })
         }
@@ -47,6 +53,7 @@ const Login = () => {
             setUserInfo({ ...userInfo, password: e.target.value });
         }
     }
+
     return (
         <div className='w-1/2 m-auto border-2 border-orange-500 my-24 p-24'>
             <h1 className='text-4xl font-bold text-center mb-3'>Login</h1>

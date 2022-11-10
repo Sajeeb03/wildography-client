@@ -9,7 +9,7 @@ import useTitle from '../../Hooks/useTitle';
 const ServiceDetails = () => {
     const service = useLoaderData();
     // console.log(service.data)
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const { _id, title, price, rating, details, img } = service.data;
     const [reviews, setReviews] = useState([]);
     const [refresh, setRefresh] = useState(true);
@@ -49,8 +49,18 @@ const ServiceDetails = () => {
     useTitle(`services/${title}`)
 
     useEffect(() => {
-        fetch(`https://wildography-server.vercel.app/reviews?service=${title}`)
-            .then(res => res.json())
+        fetch(`https://wildography-server.vercel.app/reviews?service=${title}`, {
+            headers: {
+
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut()
+                }
+                return res.json()
+            })
             .then(data => setReviews(data.data))
             .catch(err => console.error(err))
     }, [refresh])

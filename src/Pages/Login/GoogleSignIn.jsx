@@ -3,6 +3,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { verifyToken } from '../../api/verifyjwt';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 const GoogleSignIn = () => {
     const { googleSignIn, gitHubSignIn } = useContext(AuthContext);
@@ -13,8 +14,12 @@ const GoogleSignIn = () => {
     const handleGoogleSignIn = async () => {
         try {
             const res = await googleSignIn(googleProvider);
-            console.log(res.user);
-            navigate(location?.state?.from?.pathname || '/')
+            // console.log(res.user);
+            const data = await verifyToken(res.user);
+            if (data.success) {
+
+                navigate(location?.state?.from?.pathname || '/')  
+            }
         } catch (error) {
             console.error(error)
         }
@@ -23,7 +28,10 @@ const GoogleSignIn = () => {
         try {
             const res = await gitHubSignIn(githubProvider);
             console.log(res.user)
-            navigate(location?.state?.from?.pathname || '/')
+            const data = await verifyToken(res.user);
+            if (data.success) {
+                navigate(location?.state?.from?.pathname || '/')  
+            }
         } catch (error) {
             console.error(error)
         }

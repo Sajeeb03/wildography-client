@@ -2,6 +2,7 @@ import { Button, Label, TextInput } from 'flowbite-react';
 import React, { useContext } from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { verifyToken } from '../../api/verifyjwt';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 import GoogleSignIn from './GoogleSignIn';
@@ -22,8 +23,11 @@ const Register = () => {
             const update = await updateUser(name, url);
             console.log(res.user)
             setError({ ...error, general: "" })
-            e.target.reset()
-            navigate('/');
+            const data = await verifyToken(res.user);
+            if (data.success) {
+                e.target.reset();
+                navigate(location?.state?.from?.pathname || '/')
+            }
         } catch (err) {
             setError({ ...error, general: err.message })
         }

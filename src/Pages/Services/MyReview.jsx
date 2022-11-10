@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
 
 const MyReview = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [myReviews, setMyReviews] = useState(null);
     const [loading, setLoading] = useState(true);
     const [refresh, setRefresh] = useState(true)
@@ -34,8 +34,17 @@ const MyReview = () => {
     }
 
     useEffect(() => {
-        fetch(`https://wildography-server.vercel.app/reviews?email=${user.email}`)
-            .then(res => res.json())
+        fetch(`https://wildography-server.vercel.app/reviews?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    return logOut()
+                }
+                return res.json()
+            })
             .then(data => {
                 setMyReviews(data.data)
                 setLoading(false)
