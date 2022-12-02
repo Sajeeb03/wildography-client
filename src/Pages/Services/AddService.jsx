@@ -34,7 +34,7 @@ const AddService = () => {
             console.error(error)
         }
 
-        console.log(service)
+        // console.log(service)
     }
     return (
         <div className='border-2 border-white p-6 rounded-lg my-12'>

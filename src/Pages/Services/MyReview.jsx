@@ -18,7 +18,7 @@ const MyReview = () => {
                 method: "DELETE"
             });
             const data = await res.json();
-            console.log(data)
+            // console.log(data)
 
             if (data.success) {
                 toast.warn(data.message, { autoClose: 500 })
@@ -30,7 +30,7 @@ const MyReview = () => {
         }
     }
     const handleUpdate = async (id) => {
-        console.log(id)
+        // console.log(id)
     }
 
     useEffect(() => {

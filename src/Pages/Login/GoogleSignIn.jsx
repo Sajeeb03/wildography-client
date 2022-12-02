@@ -27,7 +27,7 @@ const GoogleSignIn = () => {
     const handleGitHubSignIn = async () => {
         try {
             const res = await gitHubSignIn(githubProvider);
-            console.log(res.user)
+            // console.log(res.user)
             const data = await verifyToken(res.user);
             if (data.success) {
                 navigate(location?.state?.from?.pathname || '/')  
