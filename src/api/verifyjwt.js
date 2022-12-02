@@ -1,7 +1,7 @@
 
 export const verifyToken = async (user) => {
     const currentUser = { user: user.email };
-    console.log(currentUser)
+    // console.log(currentUser)
     try {
         const res = await fetch('https://wildography-server.vercel.app/jwt', {
             method: 'POST',
@@ -16,6 +16,6 @@ export const verifyToken = async (user) => {
         return data;
 
     } catch (error) {
-        console.error(error)
+        // console.error(error)
     }
 }

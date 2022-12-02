@@ -5,8 +5,7 @@ import { FaStar, FaUser } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import useTitle from '../../Hooks/useTitle';
-import DateObject from "react-date-object";
-import ScrollToTop from '../../Hooks/useScrollToTop';
+
 const ServiceDetails = () => {
     const service = useLoaderData();
     // console.log(service.data)
@@ -16,7 +15,6 @@ const ServiceDetails = () => {
     const [refresh, setRefresh] = useState(true);
     const showDate = new Date();
     const time = showDate.getDate() + showDate.getTime();
-    console.log(time)
 
     const handleReview = async e => {
         e.preventDefault();
@@ -29,7 +27,7 @@ const ServiceDetails = () => {
             time: time
         }
 
-        console.log(reviewDetails);
+        // console.log(reviewDetails);
 
         try {
             const res = await fetch(`https://wildography-server.vercel.app/reviews`, {
@@ -40,7 +38,7 @@ const ServiceDetails = () => {
                 body: JSON.stringify(reviewDetails)
             })
             const data = await res.json();
-            console.log(data)
+            // console.log(data)
             e.target.reset();
             setRefresh(!refresh)
 
@@ -75,7 +73,7 @@ const ServiceDetails = () => {
         <div>
             <div className='md:w-1/2 m-auto border-2 border-white p-4 rounded-lg my-12'>
                 <h1 className="text-4xl font-bold text-center mb-3">{title}</h1>
-                <img src={img} alt="" className='h-[500px] w-full' />
+                <img src={img} alt="" className='md:h-[500px] w-full' />
                 <h2 className="text-2xl font-semibold my-2">Description:</h2>
                 <p className='mb-3'>{details}</p>
                 <h2 className="text-2xl font-semibold my-2">Price: ${price}</h2>

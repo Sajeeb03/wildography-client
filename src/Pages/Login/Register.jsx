@@ -21,7 +21,7 @@ const Register = () => {
         try {
             const res = await registration(userInfo.email, userInfo.password);
             const update = await updateUser(name, url);
-            console.log(res.user)
+
             setError({ ...error, general: "" })
             const data = await verifyToken(res.user);
             if (data.success) {
@@ -34,7 +34,7 @@ const Register = () => {
 
     }
     const handleEmail = (e) => {
-        console.log(e.target.value)
+
         if (!/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(e.target.value)) {
             setError({ ...error, email: 'Please enter a valid email' });
             setUserInfo({ ...userInfo, email: "" })
