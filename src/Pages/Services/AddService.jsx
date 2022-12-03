@@ -37,7 +37,7 @@ const AddService = () => {
         // console.log(service)
     }
     return (
-        <div className='border-2 border-white p-6 rounded-lg my-12'>
+        <div className='border-2 border-white p-6 rounded-lg my-12 md:my-5'>
             <h1 className='text-3xl text-center font-bold'>Add A Service</h1>
             <form onSubmit={handleAddService}>
                 <div>

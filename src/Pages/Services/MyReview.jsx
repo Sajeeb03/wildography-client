@@ -58,13 +58,13 @@ const MyReview = () => {
     }
 
     return (
-        <div>
+        <div className='mt-9 md:mt-0 px-2'>
 
             {   
                 myReviews?.length === 0 ? <div className='h-screen flex justify-center items-center'>
                     <h1 className='text-4xl font-bold'>No Review Added</h1>
                 </div> :
-                myReviews.map(review => <div className='border-2 border-white rounded-lg p-12 my-5' key={review._id}>
+                    myReviews?.map(review => <div className='border-2 border-white rounded-lg p-12 my-5' key={review._id}>
                     <div className='flex items-center gap-3'>
                         {review.img ? <img src={review?.img} className="w-12 rounded-full" alt="" /> : <FaUser className='h-6 w-6 text-white' />}
                         <p className='text-lg font-semibold'>{review.name}</p>
@@ -75,7 +75,7 @@ const MyReview = () => {
                     </div>
                     <div className='flex justify-end gap-3 items-end'>
                         <button onClick={() => handleDelete(review._id)} className='flex gap-2 bg-[#242424] border-2 border-white rounded-lg px-4 py-2'>Delete <FaTrash className='h-6 w-6'></FaTrash></button>
-                        <Link to={`/reviews/${review._id}`}>
+                            <Link to={`/dashboard/reviews/${review._id}`}>
                             <button className='flex gap-2 bg-[#242424] border-2 border-white rounded-lg px-4 py-2'>Edit/Update <FaEdit className='h-6 w-6'></FaEdit></button>
                         </Link>
                     </div>

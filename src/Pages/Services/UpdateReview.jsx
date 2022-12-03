@@ -26,7 +26,7 @@ const UpdateReview = () => {
         const data = await res.json();
         if (data.success) {
             toast.success(data.message, { autoClose: 500 })
-            navigate('/myreviews');
+            navigate('/dashboard/myReviews');
         }
     }
     useEffect(() => {

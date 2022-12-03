@@ -30,8 +30,8 @@ const Header = () => {
                 <Link className='ml-3' to="/blogs">Blogs</Link>
                 {
                     user?.uid ? <>
-                        <Link className='ml-3' to="/myreviews">My Reviews</Link>
-                        <Link className='ml-3' to="/addservice">Add Service</Link>
+
+                        <Link className='ml-3' to="/dashboard/">Dashboard</Link>
                         <Link onClick={handleSignOut} className='ml-3 mr-1' to="/login">LogOut</Link>
                     </> : <Link className='ml-3' to="/login">Log In</Link>
                 }
@@ -47,10 +47,7 @@ const Header = () => {
                         {
                             user?.uid ? <>
                                 <li>
-                                    <Link className='' to="/myreviews">MyReviews</Link>
-                                </li>
-                                <li>
-                                    <Link className='' to="/addservice">AddService</Link>
+                                    <Link className='' to="/dashboard/">Dashboard</Link>
                                 </li>
                                 <li>
                                     <Link onClick={handleSignOut} className='' to="/login">LogOut</Link>
