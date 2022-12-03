@@ -1,11 +1,13 @@
 import { Sidebar } from 'flowbite-react';
 import React, { useState } from 'react';
 import { FaHome } from 'react-icons/fa';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
+import useTitle from '../../Hooks/useTitle';
 import Header from '../../Pages/Shared/Header/Header';
 
 const DashboardLayout = () => {
     const [drawer, setDrawer] = useState(false);
+    useTitle("My Reviews")
     return (
         <div>
             <Header />
@@ -14,12 +16,12 @@ const DashboardLayout = () => {
                     <ul>
                         <li>
                             <button className='border-2 border-black md:border-white p-2 w-full rounded-lg mt-2'>
-                                <Link to="/dashboard/myReviews">My Reviews</Link>
+                                <NavLink style={({ isActive }) => isActive ? { color: "#d14d3c" } : { color: "white" }} to="/dashboard/">My Reviews</NavLink>
                             </button>
                         </li>
                         <li>
                             <button className='border-2 border-black md:border-white p-2 w-full rounded-lg mt-2'>
-                                <Link to="/dashboard/addService">Add Service</Link>
+                                <NavLink style={({ isActive }) => isActive ? { color: "#d14d3c" } : { color: "white" }} to="/dashboard/addService">Add Service</NavLink>
                             </button>
                         </li>
                     </ul>
